@@ -37,7 +37,7 @@ This script requires your main emacs config and init files to be stored in **~/.
 
 Once you have setup .emacs.d, clone this repo as follows:
 
-    git clone https://github.com/jackmoffat/mu4easy.git ~/.emacs.d/mu4e/
+    git clone https://github.com/jackmoffat/mu4easy.git ~/.emacs.d/mu4e
 
  
 

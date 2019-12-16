@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-# This script will  add or remove an account from mu4e. This is meant to be run from the .emacs.d directory
+# This script will  add or remove an account from mu4e. This is meant to be run from the .emacs.d/mu4e directory
 #   use -A <email> to add an account
 #   use -R <email> to remove an account
 
