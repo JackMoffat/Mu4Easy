@@ -43,7 +43,7 @@ Once you have setup .emacs.d, clone this repo as follows:
 
 ### init.el and org-mode
 
-emacs' .el file is where customization usually starts, but it may not be where it should all remain. If you have several distinct activities you use emacs for, you may want to organize your customizations in a more legible format. *org-mode* files are great for this. To load a configuration file (ex. email.org), add the following lines to your init file.
+emacs' init.el file is where customization usually starts, but it may not be where it should all remain. If you have several distinct activities you use emacs for, you may want to organize your customizations in a more legible format. *org-mode* files are great for this. To load a configuration file (ex. email.org), add the following lines to your init file.
 
     (when (file-readable-p "~/.emacs.d/config.org")
         (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))
@@ -65,11 +65,13 @@ You will need information on the SMTP/IMAP ports and servers that your account u
 
 Easiest thing to do is search for your provider's settings, ex. "outlook IMAP settings"
 
-- [here are the IMAP/SMTP settings for some common email accounts](https://support.office.com/en-us/article/pop-and-imap-email-settings-for-outlook-8361e398-8af4-4e97-b147-6c6c4ac95353)
+- [Common IMAP/SMTP settings](https://support.office.com/en-us/article/pop-and-imap-email-settings-for-outlook-8361e398-8af4-4e97-b147-6c6c4ac95353)
 
 Some email providers will require you to enable IMAP connection to the account as a security measure. If you do a web search for "how to enable IMAP for <provider> account", it should be easy to find 
 
-You will be asked to enter two kinds of password a number of times during the setup, one for the email account being setup and one for encrypting/decrypting the .gpg files that hold the account's password. Passwords requested in the terminal generally refer to the password for the account being setup. If a password is asked for in a pop-up, it is usually to encrypt or decrypt a .gpg file. For example,
+You will be asked to enter two kinds of password a few times during the setup, one for the email account being setup and one for encrypting/decrypting the .gpg files that hold the account's password. 
+
+Passwords requested in the terminal generally refer to the password for the account being setup. If a password is asked for in a pop-up, it is usually to encrypt or decrypt a .gpg file. For example,
 
 ### In terminal
 
@@ -99,4 +101,10 @@ If you wish to remove an account:
     ./setupMu4eAccount.sh -R <emailaddress>
     
 The account's STMP/IMAP information will remain in .authinfo.gpg after running this command, and this should be harmless. If you'd like to remove that too, just decrypt .authinfo.gpg, remove the relevant lines, and re-save it.
+
+
+# Contribution
+
+I am not a programmer by training. **Feel free to edit and improve this utility as you see fit**. 
+If you have made a change you feel is worth sharing, please initiate a pull request. 
 
