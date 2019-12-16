@@ -46,8 +46,8 @@ function make_authinfo {
     local SMTPSERVER SMTPPORT IMAPPORT
     SMTPPORT="587"
     IMAPPORT="993"
-    case in
-        *"outlook"*|"*uwaterloo*"|"*hotmail*")
+    case "${PROVIDER}" in
+        "*outlook*"|"*uwaterloo*"|"*hotmail*")
             SMTPSERVER="smtp.office365.com"
             IMAPSERVER="outlook.office365.com"
             ;;
@@ -152,7 +152,7 @@ function assemble_channel_group {
     
     CHANNELS="Group ${ACCOUNTPROVIDER}"
     while IFS= read -r line; do
-        if [[ $line != *"inbox" ]] && [[ $line != *"calendar" ]] && [[ $line = "Channel ${ACCOUNTPROVIDER}"* ]]; then
+        if [[ $line != *"inbox" ]] && [[ $line != *"calendar" ]] && [[ $line != *"junk"* ]] && [[ $line != *"spam"* ]] && [[ $line = "Channel ${ACCOUNTPROVIDER}"* ]]; then
             CHANNELS="${CHANNELS}\n$line"
         fi
     done < $SYNCFILE
@@ -168,16 +168,12 @@ function assemble_channel_group {
 
 
 function remove_email {
-    # takes ARG1 email address of account
-    # ARG2 the name associated with account's .mbsyncpass and Maildir folder
-    #    (example. "roberttables-gmail", from the key .mbsyncpass-roberttables-gmail and folder ~/Maildir/roberttables-gmail)
-    # ARG3 the file where the lisp configuration for mu4e is stored (ex. email.org)
-    # ARG4 leave blank or enter "DELETE FOLDER" to delete account's maildir folder
-
     # remove account .mbsyncpass
     # remove account information from .mbsyncrc
     # trim leading newlines from .mbsyncrc (if there are any) 
-    # remove lisp config    
+    # remove lisp config
+    # does not remove account's information from .authinfo.gpg
+    
     rm ".mbsyncpass-${ACCOUNTPROVIDER}.gpg" && echo -e ".mbsyncpass-${ACCOUNTPROVIDER}.gpg removed "
     sed -i "/# Account Information for ${EMAILADDRESS}/,/# End group*/d" .mbsyncrc
     sed -i '/./,$!d' .mbsyncrc 

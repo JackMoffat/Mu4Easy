@@ -18,7 +18,9 @@ while getopts ":A:" opt; do
     MAILHOME="Maildir/$ACCOUNTPROVIDER/"
     FOLDERLIST="${ACCOUNTPROVIDER}-folders"
     SYNCFILE=".mbsyncrc" 
+    read -p $'Enter name for file that will hold all lisp configuration info (ex. email.org)\n .org extension highly recommended): ' LISPCONFIGFILE    
 
+    
     case $opt in
         A)
             ##################
@@ -62,6 +64,7 @@ while getopts ":A:" opt; do
             mbsync -c $HOME/.emacs.d/mu4e/.mbsyncrc -a
             # TODO fix automatic hotkey picking for switch-contexts for
             # accounts starting with the same letter in MU4ENAME
+            exit 1
             ;;
         R)
             #####################
@@ -75,5 +78,7 @@ while getopts ":A:" opt; do
             echo "Please enter -A <email> to add an account, or -R <email> to remove an account"
             exit 1
             ;;
-    esac            
-done            
+    esac
+done
+
+echo "Please enter -A <email> to add an account, or -R <email> to remove an account"

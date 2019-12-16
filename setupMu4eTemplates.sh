@@ -52,6 +52,7 @@ EOF
     for i in {1..4}; do
         printf "\n" >> $SYNCFILE
     done
+    ln -s $HOME/.emacs.d/mu4e/${SYNCFILE} $HOME/${SYNCFILE}
 }
 
 
@@ -83,11 +84,7 @@ function template_main_email_config {
     # Will overwrite any existing file with the same name as LISPCONFIGFILE once set
     # (highly) recommended to use .org extension, so long as your org-babel can tangle
 
-    
-    read -p $'Enter name for file that will hold all lisp configuration info (ex. email.org)\n .org extension highly recommended): ' LISPCONFIGFILE    
     cat<< 'EOF' > "${LISPCONFIGFILE}"
-
-
 #+STARTUP: here's startup
 #+TITLE: Jack's semi-automated take on Mu4e for Dummies
 #+CREATOR: u/skizmi, Jack M, reddit, google.
@@ -302,6 +299,7 @@ EOF
     # symlink email config file from mu4e to .emacs.d, for use by init.el or config.org
     if [[ ! -f ${LISPCONFIGFILE} ]]; then template_main_email_config; fi
     sed -i "/;;CONTEXTINSERTIONSITE/r./${ACCOUNTPROVIDER}-context" "${LISPCONFIGFILE}"
+    #sed -i "s/;;CONTEXTINSERTIONSITE/${ACCOUNTPROVIDER}-context" "${LISPCONFIGFILE}"
     rm "${ACCOUNTPROVIDER}-context"
     ln -s "$HOME/.emacs.d/mu4e/${LISPCONFIGFILE}" "$HOME/.emacs.d/"
 }
