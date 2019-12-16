@@ -1,7 +1,4 @@
-last TODOs: why didnt contexts show up when I didnt have names matching the first bit?
-
-
-#  ( MU4EASY ): MU4E Automated Setup Yielder
+# ( MU4EASY ): MU4E Automated Setup Yielder
 
 These scripts are intended to automate and generalize the process outlined in this reddit post - [mu4e for dummies](https://www.reddit.com/r/emacs/comments/bfsck6/mu4e_for_dummies/)
 
@@ -18,7 +15,6 @@ Mu4e's text-based interface means that it imposes a lighter load on your compute
 
 The maildir-utils and mu4e packages are essential, and Isync is what allows us to keep copies of our email offline.
 
-TODO: make sure mu4e install works in this fashion
 
     sudo apt install maildir-utils mu4e isync 
 

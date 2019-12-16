@@ -1,2 +1,3 @@
 Todo
 automate removal of information from .authinfo.gpg
+TODO: make sure mu4e install works after sudo apt install mu by sudo apt install mu4e
