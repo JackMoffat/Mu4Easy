@@ -251,12 +251,11 @@ function template_make_lisp_context {
     # Template for mu4e's lisp configuration in LISPCONFIGFILE ("email.org")
     # First added to a temporary file ACCOUNTPROVIDER-context,
     # Then inserted into LISPCONFIGFILE at specified site
-    local MU4ENAME USERFULLNAME
     
     echo -e "Enter a context name for ${ACCOUNTPROVIDER} within mu4e's menus\n "
     read -p "Warning: use different first letters for all account's context names: " MU4ENAME 
     read -p "Enter the name you want to address these emails from {ex. Jane Doe}: " USERFULLNAME
-    
+    # currently testing removing the auth credentials and starttls credentials lines!
     cat<<EOF> "${ACCOUNTPROVIDER}-context"
         (make-mu4e-context ;; $EMAILADDRESS
             :name "$MU4ENAME" ;;for $ACCOUNTPROVIDER
@@ -275,12 +274,10 @@ function template_make_lisp_context {
                     (mu4e-compose-format-flowed . t)
                     (smtpmail-queue-dir . "~/Maildir/$ACCOUNTPROVIDER/queue/cur")
                     (message-send-mail-function . smtpmail-send-it)
-                    (smtpmail-smtp-user . "$ACCOUNT")
-                    (smtpmail-starttls-credentials . (("smtp.$PROVIDER.com" 587 nil nil)))
-                    (smtpmail-auth-credentials . (expand-file-name "~/.authinfo.gpg"))
-                    (smtpmail-default-smtp-server . "smtp.$PROVIDER.com")
-                    (smtpmail-smtp-server . "smtp.$PROVIDER.com")
-                    (smtpmail-smtp-service . 587)
+                    (smtpmail-smtp-user . "$EMAILADDRESS")
+                    (smtpmail-default-smtp-server . "$SMTPSERVER")
+                    (smtpmail-smtp-server . "$SMTPSERVER")
+                    (smtpmail-smtp-service . $SMTPPORT)
                     (smtpmail-debug-info . t)
                     (smtpmail-debug-verbose . t)
                     (mu4e-maildir-shortcuts . ( ("/$ACCOUNTPROVIDER/INBOX"                . ?i)

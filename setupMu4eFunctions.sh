@@ -43,7 +43,7 @@ function make_authinfo {
     # overwrite old .authinfo.gpg when finished to update
 
     # defaults - catch all option works for gmail accounts
-    local SMTPSERVER SMTPPORT IMAPPORT
+
     SMTPPORT="587"
     IMAPPORT="993"
     case "${PROVIDER}" in
@@ -63,8 +63,8 @@ function make_authinfo {
     fi
     # Display current port and server settings, give option to edit
     echo -e "the current settings to be written are: \n \n"
-    echo -e "machine ${SMTPSERVER} login $ACCOUNT port ${SMTPPORT} password <password>\n"
-    echo -e "machine ${IMAPSERVER} login $ACCOUNT port ${IMAPPORT} password <password>\n\n"
+    echo -e "machine ${SMTPSERVER} login $EMAILADDRESS port ${SMTPPORT} password <password>\n"
+    echo -e "machine ${IMAPSERVER} login $EMAILADDRESS port ${IMAPPORT} password <password>\n\n"
     read -p "do you want to change these values? y/n : " ANSWER
     echo -e "\n"
     while [[ true ]]; do
@@ -87,8 +87,8 @@ function make_authinfo {
     # re-encrypt to .authinfo.gpg and clear passwords
     EMAILPASS="$(gpg2 -d ".mbsyncpass-${ACCOUNTPROVIDER}.gpg")"
     cat<<EOF>>".authinfo"
-machine $SMTPSERVER login $ACCOUNT port $SMTPPORT password $EMAILPASS
-machine $IMAPSERVER login $ACCOUNT port $IMAPPORT password $EMAILPASS
+machine $SMTPSERVER login $EMAILADDRESS port $SMTPPORT password $EMAILPASS
+machine $IMAPSERVER login $EMAILADDRESS port $IMAPPORT password $EMAILPASS
 EOF
     echo -e "\n" >> ".authinfo"
     gpg2 -c ".authinfo"

@@ -1,3 +1,6 @@
+last TODOs: why didnt contexts show up when I didnt have names matching the first bit?
+
+
 #  ( MU4EASY ): MU4E Automated Setup Yielder
 
 These scripts are intended to automate and generalize the process outlined in this reddit post - [mu4e for dummies](https://www.reddit.com/r/emacs/comments/bfsck6/mu4e_for_dummies/)
@@ -15,6 +18,7 @@ Mu4e's text-based interface means that it imposes a lighter load on your compute
 
 The maildir-utils and mu4e packages are essential, and Isync is what allows us to keep copies of our email offline.
 
+TODO: make sure mu4e install works in this fashion
 
     sudo apt install maildir-utils mu4e isync 
 
@@ -22,7 +26,7 @@ The maildir-utils and mu4e packages are essential, and Isync is what allows us t
 Gnupg2 allows us to encrypt passwords instead of storing them as plain text files.
 
 
-    sudo apt install gnupg2
+    sudo apt install gnupg2 gnutls-bin
     
 (For those who are interested, Maildir-utils is the "Mu" in "Mu4e". The "4e" means "4 emacs" and the "4" in "4 emacs" represents the symbol 4's english homonym "for" which conveys the attribution of "e" ("emacs") to "Mu" ("Maildir-utils") Read all together, therefore, this acronym means "Maildir-Utils for emacs")
 
