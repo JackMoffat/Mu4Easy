@@ -43,7 +43,8 @@ Once you have setup .emacs.d, clone this repo as follows:
 
 ### init.el and org-mode
 
-emacs' init.el file is where customization usually starts, but it may not be where it should all remain. If you have several distinct activities you use emacs for, you may want to organize your customizations in a more legible format. *org-mode* files are great for this. To load a configuration file (ex. config.org, email.org), add the following lines to your init file.
+emacs' init.el file is where customization usually starts, but it may not be where it should all remain. If you have several distinct activities you use emacs for, you may want to organize your customizations in a more legible format. *org-mode* files are great for this. To load a configuration file (ex. email.org), add the following lines to your init file.
+
 
     ;; converts org files to lisp, when corresponding org file is present
     
