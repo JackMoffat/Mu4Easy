@@ -96,7 +96,8 @@ Passwords requested in the terminal generally refer to the password for the acco
 
 # Lisp Configuration
 
-This setup writes the lisp code that configures accounts within emacs to a file outside of init.el to keep the configuration files separate, but it can all be moved into whatever configuration file you like. I use **"email.org"** which is converted by org-babel into **"email.el"**.
+This setup writes the mu4e configuration lisp code to a file outside of init.el for organizational purposes, but it can all be moved into whatever configuration file you like. I use **"email.org"**, which is converted by org-babel into **"email.el"**.
+
 
 ## Removing an account
 
