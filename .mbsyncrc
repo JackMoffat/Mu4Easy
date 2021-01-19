@@ -1,0 +1,295 @@
+# Account Information for jackmoffat@hotmail.com
+IMAPAccount jackmoffat-hotmail
+# Address to connect to
+Host outlook.office365.com
+User jackmoffat@hotmail.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.emacs.d/mu4e/.mbsyncpass-jackmoffat-hotmail.gpg"
+AuthMechs LOGIN
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# Local and remote storage
+IMAPStore jackmoffat-hotmail-remote
+Account jackmoffat-hotmail
+
+# Main local storage for account, used to query server for subfolders
+MaildirStore jackmoffat-hotmail-local
+Path ~/Maildir/jackmoffat-hotmail/
+Inbox ~/Maildir/jackmoffat-hotmail/INBOX
+Subfolders Verbatim
+
+# Specify connection
+Channel jackmoffat-hotmail-inbox
+Master :jackmoffat-hotmail-remote:
+Slave :jackmoffat-hotmail-local:
+Patterns "INBOX"
+Create Both
+Expunge Both
+SyncState *
+
+
+
+
+
+
+Channel jackmoffat-hotmail-archive
+Master :jackmoffat-hotmail-remote:"Archive"
+Slave :jackmoffat-hotmail-local:"Archive"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-deleted
+Master :jackmoffat-hotmail-remote:"Deleted"
+Slave :jackmoffat-hotmail-local:"Deleted"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-deleted/random-school-stuff
+Master :jackmoffat-hotmail-remote:"Deleted/Random School Stuff"
+Slave :jackmoffat-hotmail-local:"Deleted/Random School Stuff"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-drafts
+Master :jackmoffat-hotmail-remote:"Drafts"
+Slave :jackmoffat-hotmail-local:"Drafts"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-facebook
+Master :jackmoffat-hotmail-remote:"facebook"
+Slave :jackmoffat-hotmail-local:"facebook"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-favoritrs
+Master :jackmoffat-hotmail-remote:"Favoritrs"
+Slave :jackmoffat-hotmail-local:"Favoritrs"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-focus-paid-opinions
+Master :jackmoffat-hotmail-remote:"Focus Paid Opinions"
+Slave :jackmoffat-hotmail-local:"Focus Paid Opinions"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-greyhound
+Master :jackmoffat-hotmail-remote:"Greyhound"
+Slave :jackmoffat-hotmail-local:"Greyhound"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-important-or-favorite
+Master :jackmoffat-hotmail-remote:"Important or Favorite"
+Slave :jackmoffat-hotmail-local:"Important or Favorite"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-inbox
+Master :jackmoffat-hotmail-remote:"Inbox"
+Slave :jackmoffat-hotmail-local:"Inbox"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-interac
+Master :jackmoffat-hotmail-remote:"Interac"
+Slave :jackmoffat-hotmail-local:"Interac"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-jobs
+Master :jackmoffat-hotmail-remote:"Jobs"
+Slave :jackmoffat-hotmail-local:"Jobs"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-junk
+Master :jackmoffat-hotmail-remote:"Junk"
+Slave :jackmoffat-hotmail-local:"Junk"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-kijiji
+Master :jackmoffat-hotmail-remote:"kijiji"
+Slave :jackmoffat-hotmail-local:"kijiji"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-kiva
+Master :jackmoffat-hotmail-remote:"kiva"
+Slave :jackmoffat-hotmail-local:"kiva"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-look-at-further
+Master :jackmoffat-hotmail-remote:"Look at Further"
+Slave :jackmoffat-hotmail-local:"Look at Further"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-notes
+Master :jackmoffat-hotmail-remote:"Notes"
+Slave :jackmoffat-hotmail-local:"Notes"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-old-emails-from-alana
+Master :jackmoffat-hotmail-remote:"Old Emails from Alana"
+Slave :jackmoffat-hotmail-local:"Old Emails from Alana"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-outbox
+Master :jackmoffat-hotmail-remote:"Outbox"
+Slave :jackmoffat-hotmail-local:"Outbox"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-pop
+Master :jackmoffat-hotmail-remote:"POP"
+Slave :jackmoffat-hotmail-local:"POP"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-rms-headphones-charge-stuff
+Master :jackmoffat-hotmail-remote:"RMS headphones charge stuff"
+Slave :jackmoffat-hotmail-local:"RMS headphones charge stuff"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-rms-ups-amazon-jaybird-bullshit
+Master :jackmoffat-hotmail-remote:"RMS UPS amazon jaybird bullshit"
+Slave :jackmoffat-hotmail-local:"RMS UPS amazon jaybird bullshit"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-sent
+Master :jackmoffat-hotmail-remote:"Sent"
+Slave :jackmoffat-hotmail-local:"Sent"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-starbucks
+Master :jackmoffat-hotmail-remote:"Starbucks"
+Slave :jackmoffat-hotmail-local:"Starbucks"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-sync-issues
+Master :jackmoffat-hotmail-remote:"Sync Issues"
+Slave :jackmoffat-hotmail-local:"Sync Issues"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-sync-issues/conflicts
+Master :jackmoffat-hotmail-remote:"Sync Issues/Conflicts"
+Slave :jackmoffat-hotmail-local:"Sync Issues/Conflicts"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-sync-issues/local-failures
+Master :jackmoffat-hotmail-remote:"Sync Issues/Local Failures"
+Slave :jackmoffat-hotmail-local:"Sync Issues/Local Failures"
+Create Both
+Expunge Both
+SyncState *
+
+
+Channel jackmoffat-hotmail-sync-issues/server-failures
+Master :jackmoffat-hotmail-remote:"Sync Issues/Server Failures"
+Slave :jackmoffat-hotmail-local:"Sync Issues/Server Failures"
+Create Both
+Expunge Both
+SyncState *
+
+
+Group jackmoffat-hotmail
+Channel jackmoffat-hotmail-archive
+Channel jackmoffat-hotmail-deleted
+Channel jackmoffat-hotmail-deleted/random-school-stuff
+Channel jackmoffat-hotmail-drafts
+Channel jackmoffat-hotmail-facebook
+Channel jackmoffat-hotmail-favoritrs
+Channel jackmoffat-hotmail-focus-paid-opinions
+Channel jackmoffat-hotmail-greyhound
+Channel jackmoffat-hotmail-important-or-favorite
+Channel jackmoffat-hotmail-interac
+Channel jackmoffat-hotmail-jobs
+Channel jackmoffat-hotmail-kijiji
+Channel jackmoffat-hotmail-kiva
+Channel jackmoffat-hotmail-look-at-further
+Channel jackmoffat-hotmail-notes
+Channel jackmoffat-hotmail-old-emails-from-alana
+Channel jackmoffat-hotmail-outbox
+Channel jackmoffat-hotmail-pop
+Channel jackmoffat-hotmail-rms-headphones-charge-stuff
+Channel jackmoffat-hotmail-rms-ups-amazon-jaybird-bullshit
+Channel jackmoffat-hotmail-sent
+Channel jackmoffat-hotmail-starbucks
+Channel jackmoffat-hotmail-sync-issues
+Channel jackmoffat-hotmail-sync-issues/conflicts
+Channel jackmoffat-hotmail-sync-issues/local-failures
+Channel jackmoffat-hotmail-sync-issues/server-failures
+# End group jackmoffat@hotmail.com
+
+
+
+
+
+
+
+
