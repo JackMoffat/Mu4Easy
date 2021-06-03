@@ -7,7 +7,7 @@ PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.emacs.d/mu4e/.mbsyncpass-ja
 AuthMechs LOGIN
 SSLType IMAPS
 SSLVersions TLSv1.2
-CertificateFile /etc/ssl/certs/ca-certificates.crt
+CertificateFile /etc/ssl/certs/ca-certificates.crt #comment out?
 
 # Local and remote storage
 IMAPStore jackmoffat-hotmail-remote
@@ -285,6 +285,52 @@ Channel jackmoffat-hotmail-sync-issues/conflicts
 Channel jackmoffat-hotmail-sync-issues/local-failures
 Channel jackmoffat-hotmail-sync-issues/server-failures
 # End group jackmoffat@hotmail.com
+
+
+
+
+
+
+
+
+
+# Account Information for j4moffat@gmail.com
+IMAPAccount j4moffat-gmail
+# Address to connect to
+Host imap.gmail.com
+User j4moffat@gmail.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.emacs.d/mu4e/.mbsyncpass-j4moffat-gmail.gpg"
+AuthMechs LOGIN
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# Local and remote storage
+IMAPStore j4moffat-gmail-remote
+Account j4moffat-gmail
+
+# Main local storage for account, used to query server for subfolders
+MaildirStore j4moffat-gmail-local
+Path ~/Maildir/j4moffat-gmail/
+Inbox ~/Maildir/j4moffat-gmail/INBOX
+Subfolders Verbatim
+
+# Specify connection
+Channel j4moffat-gmail-inbox
+Master :j4moffat-gmail-remote:
+Slave :j4moffat-gmail-local:
+Patterns "INBOX"
+Create Both
+Expunge Both
+SyncState *
+
+
+
+
+
+
+Group j4moffat-gmail
+# End group j4moffat@gmail.com
 
 
 

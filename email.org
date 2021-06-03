@@ -130,6 +130,37 @@ I have rewritten the configuration to work with a set of functions that [[https:
            (list
             ;; The line below is a target to append future contexts to the file
             ;;CONTEXTINSERTIONSITE
+            (make-mu4e-context ;; j4moffat@gmail.com
+             :name "gmail" ;;for j4moffat-gmail
+             :enter-func (lambda () (mu4e-message "Entering context work"))
+             :leave-func (lambda () (mu4e-message "Leaving context work"))
+             :match-func (lambda (msg)
+                           (when msg
+                             (mu4e-message-contact-field-matches
+                              msg '(:from :to :cc :bcc) "j4moffat@gmail.com")))
+             :vars '((user-mail-address . "j4moffat@gmail.com")
+                     (user-full-name . "Jack M")
+                     (mu4e-sent-folder . "/j4moffat-gmail/Sent Mail")
+                     (mu4e-drafts-folder . "/j4moffat-gmail/drafts")
+                     (mu4e-trash-folder . "/j4moffat-gmail/Bin")
+                     (mu4e-compose-signature . (concat "Formal Signature\n" "Emacs , org-mode , mu4e \n"))
+                     (mu4e-compose-format-flowed . t)
+                     (smtpmail-queue-dir . "~/Maildir/j4moffat-gmail/queue/cur")
+                     (message-send-mail-function . smtpmail-send-it)
+                     (smtpmail-smtp-user . "j4moffat@gmail.com")
+                     (smtpmail-default-smtp-server . "smtp.gmail.com")
+                     (smtpmail-smtp-server . "smtp.gmail.com")
+                     (smtpmail-smtp-service . 587)
+                     (smtpmail-debug-info . t)
+                     (smtpmail-debug-verbose . t)
+                     (mu4e-maildir-shortcuts . ( ("/j4moffat-gmail/INBOX"                . ?i)
+                                                 ("/j4moffat-gmail/Sent Mail" . ?s)
+                                                 ("/j4moffat-gmail/Bin"       . ?t)
+                                                 ("/j4moffat-gmail/All Mail"  . ?a)
+                                                 ("/j4moffat-gmail/drafts"    . ?d)
+                                                 ))))
+            ;; The line below is a target to append future contexts to the file
+            ;;CONTEXTINSERTIONSITE
             (make-mu4e-context ;; jackmoffat@hotmail.com
              :name "hotmail" ;;for jackmoffat-hotmail
              :enter-func (lambda () (mu4e-message "Entering context work"))
@@ -143,7 +174,11 @@ I have rewritten the configuration to work with a set of functions that [[https:
                      (mu4e-sent-folder . "/jackmoffat-hotmail/Sent Items")
                      (mu4e-drafts-folder . "/jackmoffat-hotmail/Drafts")
                      (mu4e-trash-folder . "/jackmoffat-hotmail/Bin")
-                     (mu4e-compose-signature . (concat "Formal Signature\n" "Emacs , org-mode , mu4e \n"))
+                     (mu4e-compose-signature . (concat "Jack\n"
+                                                       "Emacs "(symbol-value 'emacs-version)
+                                                       ", org-mode " (symbol-value 'org-version)
+                                                       ", mu4e " (symbol-value 'mu4e-mu-version)
+                                                       "\n"))
                      (mu4e-compose-format-flowed . t)
                      (smtpmail-queue-dir . "~/Maildir/jackmoffat-hotmail/queue/cur")
                      (message-send-mail-function . smtpmail-send-it)
@@ -153,26 +188,60 @@ I have rewritten the configuration to work with a set of functions that [[https:
                      (smtpmail-smtp-service . 587)
                      (smtpmail-debug-info . t)
                      (smtpmail-debug-verbose . t)
-                     )
-             )
+                     (mu4e-maildir-shortcuts . ( (:maildir "/jackmoffat-hotmail/INBOX" :key ?i)
+                                                 (:maildir "/jackmoffat-hotmail/Sent Items" :key ?s)
+                                                 (:maildir "/jackmoffat-hotmail/Bin" :key ?t)
+                                                 (:maildir "/jackmoffat-hotmail/All Mail" :key ?a)
+                                                 (:maildir "/jackmoffat-hotmail/Drafts" :key ?d)
+                                                 ))))
+
+            ;; The line below is a target to append future contexts to the file
+            ;;CONTEXTINSERTIONSITE
+            (make-mu4e-context ;; alias for uwaterloo through gmail
+             :name "Waterloo" ;;
+             :enter-func (lambda () (mu4e-message "Entering context waterloo"))
+             :leave-func (lambda () (mu4e-message "Leaving context waterloo"))
+             :match-func (lambda (msg)
+                           (when msg
+                             (mu4e-message-contact-field-matches
+                              msg '(:from :to :cc :bcc) "j4moffat@uwaterloo.ca")
+                             ;; msg '(:from :to :cc :bcc) (list "j4moffat@uwaterloo.ca" "jack.moffat@uwaterloo.ca")
+                             ))
+             :vars '((user-mail-address . "j4moffat@uwaterloo.ca")
+                     (user-full-name . "Jack Moffat")
+                     (mu4e-sent-folder . "/j4moffat-gmail/Sent Mail")
+                     (mu4e-drafts-folder . "/j4moffat-gmail/drafts")
+                     (mu4e-trash-folder . "/j4moffat-gmail/Bin")
+                     (mu4e-compose-signature . (concat "Thanks,\n" "Jack Moffat\n"))
+                     (mu4e-compose-format-flowed . t)
+                     (smtpmail-queue-dir . "~/Maildir/j4moffat-gmail/queue/cur")
+                     (message-send-mail-function . smtpmail-send-it)
+                     (smtpmail-smtp-user . "j4moffat@gmail.com")
+                     (smtpmail-default-smtp-server . "smtp.gmail.com")
+                     (smtpmail-smtp-server . "smtp.gmail.com")
+                     (smtpmail-smtp-service . 587)
+                     (smtpmail-debug-info . t)
+                     (smtpmail-debug-verbose . t)
+                     (mu4e-maildir-shortcuts . ( ("/j4moffat-gmail/INBOX"                . ?i)
+                                                 ("/j4moffat-gmail/Sent Mail" . ?s)
+                                                 ("/j4moffat-gmail/Bin"       . ?t)
+                                                 ("/j4moffat-gmail/All Mail"  . ?a)
+                                                 ("/j4moffat-gmail/drafts"    . ?d)
+                                                 ))))
             ;; The line below is a target to append future contexts to the file
             ;;CONTEXTINSERTIONSITE
 
             ))
-     (setq mu4e-maildir-shortcuts '( (:maildir "/jackmoffat-hotmail/INBOX" :key ?i)
-                                     (:maildir "/jackmoffat-hotmail/Sent Items" :key ?s)
-                                     (:maildir "/jackmoffat-hotmail/Bin" :key ?t)
-                                     (:maildir "/jackmoffat-hotmail/All Mail" :key ?a)
-                                     (:maildir "/jackmoffat-hotmail/Drafts" :key ?d)
-                                     ))
+
      )
 
 
    ;; this code should ensure that things push on mu4e closing
    (defadvice mu4e-quit (after mu4e-close-and-push activate)
      (start-process "pushmail" nil "pushmail.sh"))
-
  #+END_SRC
+
+ #+RESULTS:
 
 
 ** add attachments from dired
